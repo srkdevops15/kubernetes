@@ -39,3 +39,8 @@ created
 
 # see if you can get the nodes you created
 kubectl get nodes
+
+ref:
+https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
