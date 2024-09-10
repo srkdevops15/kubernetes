@@ -1,0 +1,49 @@
+---
+# 1. Creating a namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+
+---
+# 2. Deploying a pod in a specific namespace
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  namespace: development
+spec:
+  containers:
+  - name: myapp-container
+    image: nginx:latest
+
+---
+# 3. Creating a ResourceQuota for a namespace
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources
+  namespace: development
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+
+---
+# 4. Creating a LimitRange for a namespace
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limit-range
+  namespace: development
+spec:
+  limits:
+  - default:
+      cpu: 500m
+      memory: 512Mi
+    defaultRequest:
+      cpu: 200m
+      memory: 256Mi
+    type: Container
